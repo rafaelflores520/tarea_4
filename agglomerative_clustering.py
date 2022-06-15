@@ -18,7 +18,7 @@ def main(argv):
         n = int(args[0])
         agg_clustering(data, n_cluster=n)
     elif ("-distance" in opts):
-        d = int(args[0])
+        d = float(args[0])
         agg_clustering(data, distance=d)
     else:
         print('El formato correcto es:\n python3 agglomerative_clustering.py <file> -n_cluster <int> \nor\n')
