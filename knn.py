@@ -34,7 +34,7 @@ def knn (data, k ):
     features = data.columns.to_list()[:-1]
     X = data[features]
     Y = data["class"]
-    neigh = KNeighborsClassifier(n_neighbors=3)
+    neigh = KNeighborsClassifier(n_neighbors=k)
     print('Vamos a entrenar el knn')
     start = time.time()
     neigh = neigh.fit(X, Y)
