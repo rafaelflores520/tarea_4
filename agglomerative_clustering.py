@@ -4,8 +4,8 @@ from sklearn.cluster import AgglomerativeClustering
 import matplotlib.pyplot as plt
 
 def agg_clustering(data, n_cluster=None, distance=None):
-    agg_pred = AgglomerativeClustering(n_clusters=n_cluster, distance_threshold=distance).fit_predict(data)
-    plt.scatter(data[:, 0], data[:, 1], c=agg_pred)
+    agg = AgglomerativeClustering(n_clusters=n_cluster, distance_threshold=distance).fit(data)
+    plt.scatter(data[:, 0], data[:, 1], c=agg.labels_)
     plt.show()
 
 def main(argv):
@@ -21,8 +21,8 @@ def main(argv):
         d = int(args[0])
         agg_clustering(data, distance=d)
     else:
-        print('El formato correcto es:\n python3 agglomerative_clustering.py -n_cluster <int> \nor\n')
-        print('python3 agglomerative_clustering.py -distsnce <int>')
+        print('El formato correcto es:\n python3 agglomerative_clustering.py <file> -n_cluster <int> \nor\n')
+        print('python3 agglomerative_clustering.py <file> -distance <int>')
     print("Completed.")
 
 if __name__ == "__main__":

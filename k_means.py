@@ -4,9 +4,9 @@ from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 
 def k_means(data, n_cluster):
-    k_pred = KMeans(n_clusters=n_cluster).fit_predict(data)
-    print(k_pred)
-    plt.scatter(data[:, 0], data[:, 1], c=k_pred)
+    k_mean = KMeans(n_clusters=n_cluster).fit(data)
+    print(k_mean.labels_)
+    plt.scatter(data[:, 0], data[:, 1], c=k_mean.labels_)
     plt.show()
 
 def main(argv):
@@ -16,7 +16,7 @@ def main(argv):
         data = pd.read_csv(file, header=0).to_numpy()
         k_means(data, n)
     else:
-        print('El formato correcto es: python3 k_means.py <n_cluster>')
+        print('El formato correcto es: python3 k_means.py <file> <n_cluster>')
     print("Completed.")
 
 if __name__ == "__main__":
